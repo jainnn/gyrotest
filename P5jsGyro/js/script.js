@@ -27,7 +27,6 @@ function draw(){
 
 	for (var i = 0; i < bulles.length; i++) {
 		bulles[i].update();
-		bulles[i].changeColor();
 		bulles[i].display();
 	};
 }
@@ -38,12 +37,9 @@ function Bulle(){
 	this.vitx = random(2, 12);
 	this.vity = random(2, 12);
 	this.diam = random(20, 60);
-	this.changeColor = function(){
-           this.col=color(random(255),random(255),random(255));
-        }
 	 this.display = function() {
            noStroke();
-           fill(this.col);
+		 fill(20,50,220);
 }
 	 
 Bulle.prototype = {
@@ -54,6 +50,7 @@ Bulle.prototype = {
 
 		if(this.x < this.diam/2){
 			this.x = this.diam/2;
+			
 		} else if(this.x > width-this.diam/2){
 			this.x = width-this.diam/2;
 		}

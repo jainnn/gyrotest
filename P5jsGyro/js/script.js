@@ -6,7 +6,7 @@ function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 }
 function setup(){
-	// une canvas plein écran
+
 	createCanvas(windowWidth, windowHeight);
 
 
@@ -18,7 +18,7 @@ function setup(){
     });
 
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 20; i++) {
     	bulles[i] = new Bulle();
     };
 }

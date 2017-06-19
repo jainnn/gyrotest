@@ -2,40 +2,38 @@ var forceX = 0;
 var forceY = 0;
 var bulles = [];
 
-function windowResized() { // plein écran au resize aussi
+function windowResized() { 
 	resizeCanvas(windowWidth, windowHeight);
 }
 function setup(){
 	// une canvas plein écran
 	createCanvas(windowWidth, windowHeight);
 
-	// démarrer gyrojs, pour mettre à jour forceX et forceY
-	gyro.frequency = 10; // rafraichir 10 fois par secondes
+
+	gyro.frequency = 10; 
 	gyro.startTracking(function(o) {
-        // o.x, o.y, o.z for accelerometer
-        // o.alpha, o.beta, o.gamma for gyro
+
         forceX = o.gamma/50;
         forceY = o.beta/50;
     });
 
-    // création des bulles
-    for (var i = 0; i < 5; i++) {
+
+    for (var i = 0; i < 10; i++) {
     	bulles[i] = new Bulle();
     };
 }
 function draw(){
-	background('#FFFFFF'); // fond blanc
+	background('#FFFFFF');
 noStroke();
         fill(random(255),random(255),random(255));
 
-	// update des bulles
 	for (var i = 0; i < bulles.length; i++) {
 		bulles[i].update();
 	};
 }
 
 function Bulle(){
-	this.x = width/2; // démarre au centre
+	this.x = width/2; 
 	this.y = height/2;
 	this.vitx = random(2, 12);
 	this.vity = random(2, 12);
@@ -44,7 +42,6 @@ function Bulle(){
 Bulle.prototype = {
 	update: function(){
 
-		// la vitesse est proportionnée aux forces actuelles
 		this.x += this.vitx * forceX;
 		this.y += this.vity * forceY;
 

@@ -18,17 +18,17 @@ function setup(){
     });
 
 
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 5; i++) {
     	bulles[i] = new Bulle();
     };
 }
 function draw(){
-	background('#FFFFFF');
-noStroke();
-        fill(random(255),random(255),random(255));
+   background('#FFFFFF');
 
 	for (var i = 0; i < bulles.length; i++) {
 		bulles[i].update();
+		bulles[i].changeColor();
+		bulles[i].display();
 	};
 }
 
@@ -38,7 +38,14 @@ function Bulle(){
 	this.vitx = random(2, 12);
 	this.vity = random(2, 12);
 	this.diam = random(20, 60);
+	this.changeColor = function(){
+           this.col=color(random(255),random(255),random(255));
+        }
+	 this.display = function() {
+           noStroke();
+           fill(this.col);
 }
+	 
 Bulle.prototype = {
 	update: function(){
 

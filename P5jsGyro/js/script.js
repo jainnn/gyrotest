@@ -25,11 +25,8 @@ function setup(){
 }
 function draw(){
 	background('#FFFFFF'); // fond blanc
-
-	fill(0); // afficher les forces
-	text("forceX : "+forceX, 30, 30);
-	text("forceY : "+forceY, 30, 50);
-    fill('#ECECEC');
+noStroke();
+        fill(random(255),random(255),random(255));
 
 	// update des bulles
 	for (var i = 0; i < bulles.length; i++) {

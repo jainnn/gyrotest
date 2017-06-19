@@ -17,17 +17,21 @@ function setup(){
         forceY = o.beta/50;
     });
 
-
+  
     for (var i = 0; i < 5; i++) {
     	bulles[i] = new Bulle();
     };
 }
 function draw(){
-   background('#FFFFFF');
+	background('#FFFFFF'); 
+
+	fill(0); 
+	text("forceX : "+forceX, 30, 30);
+	text("forceY : "+forceY, 30, 50);
+    fill('#ECECEC');
 
 	for (var i = 0; i < bulles.length; i++) {
 		bulles[i].update();
-		bulles[i].display();
 	};
 }
 
@@ -37,20 +41,16 @@ function Bulle(){
 	this.vitx = random(2, 12);
 	this.vity = random(2, 12);
 	this.diam = random(20, 60);
-	 this.display = function() {
-           noStroke();
-		 fill(20,50,220);
 }
-	 
 Bulle.prototype = {
 	update: function(){
+
 
 		this.x += this.vitx * forceX;
 		this.y += this.vity * forceY;
 
 		if(this.x < this.diam/2){
 			this.x = this.diam/2;
-			
 		} else if(this.x > width-this.diam/2){
 			this.x = width-this.diam/2;
 		}
